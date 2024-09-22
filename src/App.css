@@ -10,10 +10,22 @@
   box-sizing: border-box;
 }
 
+body {
+  border: none;
+  margin: 0;
+}
+
 #root {
   background-color: var(--midnight);
   height: 100vh;
   padding-top: 2%;
+  margin: 0;
+}
+
+#inside {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
 }
 
 #main-app {
@@ -22,6 +34,7 @@
   align-items: center;
   margin: 0 auto;
   width: 40%;
+  min-width: 500px;
   height: 60%;
   padding: 1% 0;
   box-shadow: 0 0 10px white;

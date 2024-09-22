@@ -11,14 +11,6 @@ export default function App() {
     });
   }, []);
 
-  const handleDelete = event => {
-    fetch("http://localhost:8000/deleteItem", {
-      method: "DELETE",
-      body: {
-        id: event.target.id
-      }
-    }).then(() => {console.log(`Item: ${event.target.id} DELETED successfully`)});
-  };
 
   return (
     <main id='main-app'>
@@ -35,8 +27,10 @@ export default function App() {
             <div className="item">
               <p className='item-description'>{item.item}</p>
               <div className='buttons'>
-                <button className='edit-button'><i className="fa-solid fa-pen-to-square edit"></i></button>
-                <button type='submit' id={item._id} onSubmit={handleDelete} className='delete-button'><i className="fa-solid fa-trash delete"></i></button>
+                {/* <button className='edit-button'><i className="fa-solid fa-pen-to-square edit"></i></button> */}
+                <form method='get' action={`http://localhost:8000/deleteItem/${item._id}`}>
+                  <button type='submit' className='delete-button'><i className="fa-solid fa-trash delete"></i></button>
+                </form>
               </div>
             </div>
           );

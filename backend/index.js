@@ -27,9 +27,11 @@ app.get("/allItems", async (req, res) => {
     res.json(document);
 });
 
-app.delete("deleteItem", async (req, res) => {
-    let document = await Todo.findOneAndDelete({_id: req.body.id});
-    res.redirect(302, "http://localhost:3000");
+app.get("/deleteItem/:_id", async (req, res) => {
+    Todo.findByIdAndDelete(req.params._id).then(item => {
+        res.redirect(302, "http://localhost:3000");
+    }
+    ).catch(error => {console.log(error)});
 });
 
 
